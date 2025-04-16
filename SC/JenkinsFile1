@@ -1,0 +1,24 @@
+pipeline{
+    agent any
+    
+    parameters{
+        string(name:'number', defaultValue:"5", description:'Enter a number')
+    }
+    
+    stages{
+        stage("Factorial"){
+            steps{
+                script{
+                    def value = params.number.toInteger()
+                    def product = 1
+                    
+                    for (int i = 1; i <= value; i++) {
+                        product = product*i
+                    }
+                    echo "Factorial of ${params.number} is ${product}"
+
+                }
+            }
+        }
+    }
+}
